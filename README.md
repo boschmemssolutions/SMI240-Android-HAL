@@ -1,4 +1,4 @@
-# Android HAL for smi240 Sensor
+# Android HAL for SMI240 Sensor
 
 ## Table of Contents
  - [Which HAL type to use](#Type)
@@ -11,15 +11,15 @@
 Different HAL typea are provided in this repository. 
 
 - To use HIDL,AIDL and Multi HAL, all the folders except "legacy" folder are required. [->](#Hal)
-- To usr legacy HAL only the legacy folder is required. [->](#legacyHal)
+- To use legacy HAL only the legacy folder is required. [->](#legacyHal)
 
 
 ## HIDL,AIDL and Multi HAL <a name=Hal></a>
 
-smi240 HIDL,AIDL and Multi Hal is module running in user space, under framework of Android Hardware Abstraction Layer.
-It provides capability to bridge smi240 sensor driver in kernel and Android APPs.
+SMI240 HIDL,AIDL and Multi Hal are modules running in user space, under framework of Android Hardware Abstraction Layer.
+It provides capability to bridge SMI240 sensor driver in kernel and Android APPs.
 
-smi240 HAL supports data synchronization feature of smi240 sensor only and shall be used with [smi240 kernel driver](https://github.com/boschmemssolutions/SMI240-Linux-Driver-IIO) based on Linux Input Framework.
+SMI240 HAL shall be used with [SMI240 kernel driver](https://github.com/boschmemssolutions/SMI240-Linux-Driver-IIO) based on Linux IIO Framework.
 
 ## Build
 
@@ -58,14 +58,12 @@ Modify the sepolicy file_contexts file (i.e. *android-platform/device/brcm/rpi4/
 
 ## Legacy HAL <a name=legacyHal></a>
 
-smi240 legacy hal is a custom specific implmentaion, which runs on a specific Linux Plattform of the custom instead on Andorid.
+SMI240 legacy HAL implements sensor HAL v1.0 Interface. It runs on Linux platform instead on Android.
 For more information please refer to [HAL sensors-1.0](https://source.android.com/devices/sensors/hal-interface)
-
-smi240 HAL supports data synchronization feature of smi240 sensor only and shall be used with [smi240 kernel driver](https://github.com/boschmemssolutions/SMI240-Linux-Driver-IIO) based on Linux Input Framework.
 
 ## Usage
 
-smi240 HAL is a shared lib, compatable with android sensor 1.0 specification.
+SMI240 HAL is a shared lib, compatible with android sensor 1.0 specification.
 There are two ways to compile/build the lib.
 
 ### build with Android SDK
@@ -77,13 +75,13 @@ Integrate this repository into your build setup into location
 ```
  android/hardware/libhardware/modules/
 ```
-extend your build setup with smi240-hal and compile it.
+extend your build setup with SMI240-hal and compile it.
 
 For more information please refer to [android build system](https://source.android.com/setup/build/building)
 
 ### build independantly without Android SDK
 
-The essecial header files from Android have already been placed in the repo and adapted for compiling the lib. The local libs instead of Android SDK libs would be used to link to the HAL lib in the build process.
+The essential header files from Android have already been placed in the repo and adapted for compiling the lib. The local libs instead of Android SDK libs would be used to link to the HAL lib in the build process.
 Go to the folder where Makefile is located, and first clean the folder by issuing command:
 ```
 make clean
@@ -104,7 +102,7 @@ See [LICENSE](LICENSE) file
                       |
                  Android Framework
                       |
-                  smi240 HAL
+                  SMI240 HAL
                       |
 -------------------------------------------------------
                  |          |
@@ -112,7 +110,7 @@ See [LICENSE](LICENSE) file
                  \          /
                input-subsystem
 	              |
-                smi240_driver
+                SMI240_driver
                       |
 -------------------------------------------------------
                   Hardware
